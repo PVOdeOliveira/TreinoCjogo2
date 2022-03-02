@@ -70,7 +70,6 @@ void escolhePalavraSecreta(){//escolhe a palavra do arquivo de palavras do jogo
     for(i=0; i<=randomico; i++){
         fscanf(f, "%s", palavra); //passa pela lista de palavras e para quando chega no numero randomico, escolhendo a palavra secreta
     }
-    printf("** %s **, %d ; %d;\n\n",palavra,randomico,qtdDePalavras);
 
     fclose(f); //fecha o arquivo
 }
