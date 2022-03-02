@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "Forca.h"
 
 char palavra[20], letrasTentadas[26];
 int tentativa=0;
