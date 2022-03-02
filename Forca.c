@@ -20,9 +20,20 @@ void jogada(){
     tentativa++;
 }
 
+int testaCerto(int tentativa, char letrasTentadas[26], char letraCerta){
+    int acertou=0, j;
+
+    for(j=0;j<tentativa;j++){
+        if(letrasTentadas[j]==letraCerta){
+            acertou=1;
+        }
+    }
+    return acertou;
+}
+
 int main() {
 
-    int i, j, acertou, venceu=0, enforcou=0;
+    int i, acertou, venceu=0, enforcou=0;
 
     sprintf(palavra,"MELANCIA"); //Palavra fixa para testes
 
@@ -30,13 +41,9 @@ int main() {
 
     while(venceu==0 && enforcou==0){
         for(i=0;i<strlen(palavra);i++){
-            acertou=0;
 
-            for(j=0;j<tentativa;j++){
-                if(letrasTentadas[j]==palavra[i]){
-                    acertou=1;
-                }
-            }
+
+            acertou = testaCerto(tentativa, letrasTentadas, palavra[i]);
 
             if(acertou==1){
                 printf(" %c",palavra[i]);
