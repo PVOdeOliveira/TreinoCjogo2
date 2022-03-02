@@ -49,13 +49,16 @@ void imprimePalavra(){//imprime todas as letras descobertas até o momento
     printf("\n\n");
 }
 
+void escolhePalavraSecreta(){
+    sprintf(palavra,"MELANCIA"); //Palavra fixa para testes
+}
+
 
 int main() {
 
     int venceu=0, enforcou=0;
 
-    sprintf(palavra,"MELANCIA"); //Palavra fixa para testes
-
+    escolhePalavraSecreta();
     titulo();
 
     while(venceu==0 && enforcou==0){
