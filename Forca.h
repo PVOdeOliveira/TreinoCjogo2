@@ -5,3 +5,4 @@ void imprimePalavra();
 void escolhePalavraSecreta();
 int contaErro();
 int testaVitoria();
+void adicionaPalavra();
