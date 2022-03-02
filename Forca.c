@@ -92,7 +92,7 @@ int contaErro(){ //conta quantos erros o jogador cometeu
     return erros;
 }
 
-int testaVitoria(){
+int testaVitoria(){ //testa se o jogador ja acertou todas as letras
     int i;
 
     for(i=0;i<strlen(palavra);i++){
@@ -102,6 +102,50 @@ int testaVitoria(){
     }
     return 1;
 }
+
+
+void adicionaPalavra(){
+    char resp, novaPalavra[20];
+    int fim=0;
+    do{
+        printf("Deseja adicionar uma nova palavra ao jogo? (S/N)");
+        scanf(" %c",&resp);
+
+        if(resp=='S'){
+            printf("\nDigite a nova palavra: ");
+            scanf("%s",&novaPalavra);
+            fim=1;
+        }
+        else if(resp=='N'){
+            fim=1;
+        }
+        else{
+            printf("Escolha uma opcao valida (S/N) [S para sim][N para nao]\n");
+        }
+    }while(fim==0);
+
+    int qtd;
+
+    FILE* f;
+    f = fopen("Palavras.txt","r+");
+    if(f == 0) {//testa falha na leitura do arquivo
+        printf("Banco de dados de palavras não disponível\n\n");
+        exit(1);
+    }
+
+
+    fscanf(f,"%d",&qtd);//le a quantidade na primeira linha
+    qtd++;//soma 1 na quantidade
+
+    fseek(f,0,SEEK_SET); //volta para a primeira linha
+    fprintf(f,"%d",qtd); //escreve a nova quantidade
+
+    fseek(f,0,SEEK_END); //vai para o fim do arquivo
+    fprintf(f,"\n%s",novaPalavra); //escreve a nova palavra
+
+    fclose(f);
+}
+
 
 int main() {
 
@@ -120,6 +164,8 @@ int main() {
         venceu=testaVitoria();
 
     }
+
+    adicionaPalavra();
 
     return 0;
 
