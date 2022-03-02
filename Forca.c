@@ -20,7 +20,7 @@ void jogada(){ //recebe a letra jogada em cada rodada e armazena em um array com
     tentativa++;
 }
 
-int testaCerto(int tentativa, char letrasTentadas[26], char letraCerta){
+int testaCerto(char letraCerta){
     //compara a letra da jogada atual, ja armazenada no array de tentativas, com a letra certa da posicao testada
 
     int acertou=0, j;
@@ -37,7 +37,7 @@ void imprimePalavra(){//imprime todas as letras descobertas até o momento
     int i, acertou;
     for(i=0;i<strlen(palavra);i++){
 
-        acertou = testaCerto(tentativa, letrasTentadas, palavra[i]);
+        acertou = testaCerto(palavra[i]);
 
         if(acertou==1){
             printf(" %c",palavra[i]);
@@ -71,6 +71,16 @@ int contaErro(){ //conta quantos erros o jogador cometeu
     return erros;
 }
 
+int testaVitoria(){
+    int i;
+
+    for(i=0;i<strlen(palavra);i++){
+        if(testaCerto(palavra[i])==0){
+            return 0;
+        }
+    }
+    return 1;
+}
 
 int main() {
 
@@ -86,6 +96,7 @@ int main() {
         jogada(letrasTentadas,tentativa);
 
         erros=contaErro();
+        venceu=testaVitoria();
 
     }
 
