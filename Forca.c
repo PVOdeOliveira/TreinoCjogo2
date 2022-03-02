@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "Forca.h"
 
 char palavra[20], letrasTentadas[26];
@@ -50,8 +52,27 @@ void imprimePalavra(){//imprime todas as letras descobertas até o momento
     printf("\n\n");
 }
 
-void escolhePalavraSecreta(){
-    sprintf(palavra,"MELANCIA"); //Palavra fixa para testes
+void escolhePalavraSecreta(){//escolhe a palavra do arquivo de palavras do jogo
+    int i, randomico, qtdDePalavras;
+
+    FILE* f;
+    f = fopen("Palavras.txt","r"); //abre o arquivo
+    if(f == 0) {//testa falha na leitura do arquivo
+        printf("Banco de dados de palavras não disponível\n\n");
+        exit(1);
+    }
+
+    fscanf(f, "%d", &qtdDePalavras); //primeira linha do arquivo tem a quantidade de palavras
+
+    srand(time(0));
+    randomico = (rand()% qtdDePalavras); //gera um num aleatorio de 0 ate a quantidade de palavras
+
+    for(i=0; i<=randomico; i++){
+        fscanf(f, "%s", palavra); //passa pela lista de palavras e para quando chega no numero randomico, escolhendo a palavra secreta
+    }
+    printf("** %s **, %d ; %d;\n\n",palavra,randomico,qtdDePalavras);
+
+    fclose(f); //fecha o arquivo
 }
 
 int contaErro(){ //conta quantos erros o jogador cometeu
