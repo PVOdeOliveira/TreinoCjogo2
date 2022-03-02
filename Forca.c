@@ -1,11 +1,32 @@
 #include <stdio.h>
 #include <string.h>
 
+char palavra[20], letrasTentadas[26];
+int tentativa=0;
+
+void titulo(){
+    printf("|*****************|\n");
+    printf("|* Jogo da Forca *|\n");
+    printf("|*****************|\n\n");
+}
+
+void jogada(){
+    char letra;
+
+    printf("Digite uma letra: ");
+    scanf(" %c",&letra);
+
+    letrasTentadas[tentativa]=letra;
+    tentativa++;
+}
+
 int main() {
-    char palavra[20], letrasTentadas[26], letra;
-    int i, j, tentativa=0, acertou, venceu=0, enforcou=0;
+
+    int i, j, acertou, venceu=0, enforcou=0;
 
     sprintf(palavra,"MELANCIA"); //Palavra fixa para testes
+
+    titulo();
 
     while(venceu==0 && enforcou==0){
         for(i=0;i<strlen(palavra);i++){
@@ -26,11 +47,8 @@ int main() {
         }
         printf("\n\n");
 
-        printf("Digite uma letra: ");
-        scanf(" %c",&letra);
+        jogada(letrasTentadas,tentativa);
 
-        letrasTentadas[tentativa]=letra;
-        tentativa++;
     }
 
     return 0;
