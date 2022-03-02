@@ -53,19 +53,39 @@ void escolhePalavraSecreta(){
     sprintf(palavra,"MELANCIA"); //Palavra fixa para testes
 }
 
+int contaErro(){ //conta quantos erros o jogador cometeu
+    int i,j,existe,erros=0;
+
+    for(i=0;i<tentativa;i++){
+        existe=0;
+
+        for(j=0;j<strlen(palavra);j++){
+            if(letrasTentadas[i]==palavra[j]){
+                existe=1;
+            }
+        }
+        if(existe==0){
+            erros++;
+        }
+    }
+    return erros;
+}
+
 
 int main() {
 
-    int venceu=0, enforcou=0;
+    int venceu=0, erros=0;
 
     escolhePalavraSecreta();
     titulo();
 
-    while(venceu==0 && enforcou==0){
+    while(venceu==0 && erros<6){
 
         imprimePalavra();
 
         jogada(letrasTentadas,tentativa);
+
+        erros=contaErro();
 
     }
 
