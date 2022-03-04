@@ -188,7 +188,24 @@ int main() {
     }
     //ADICIONAR MENSAGEM VITORIA (MOSTRAR TITULO, FORCA COMPLETA E MENSAGEM)
 
-    //ADICIONAR MENSAGEM VITORIA (MOSTRAR TITULO, FORCA COMPLETA, MENSAGEM E PALAVRA)
+    //ADICIONAR MENSAGEM DERROTA (MOSTRAR TITULO, FORCA COMPLETA, MENSAGEM E PALAVRA)
+
+    if(venceu==1){//vitoria
+        titulo();
+        mostraForca(erros);
+        imprimePalavra();
+
+        printf("Parabens!! Voce acertou!!\n\n");
+
+    }
+    else{//derrota
+        titulo();
+        mostraForca(erros);
+        imprimePalavra();
+
+        printf("Que pena! Voce se enforcou!\n");
+        printf("A palavra era %s.\n\n", palavra);
+    }
 
     //adicionaPalavra();
 
