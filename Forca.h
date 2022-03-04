@@ -6,3 +6,4 @@ void escolhePalavraSecreta();
 int contaErro();
 int testaVitoria();
 void adicionaPalavra();
+void mostraForca(int erros);
