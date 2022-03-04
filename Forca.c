@@ -8,6 +8,8 @@ char palavra[20], letrasTentadas[26];
 int tentativa=0;
 
 void titulo(){ //mostra um titulo
+    system("cls");
+
     printf("|*****************|\n");
     printf("|* Jogo da Forca *|\n");
     printf("|*****************|\n\n");
