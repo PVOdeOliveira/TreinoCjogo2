@@ -46,6 +46,8 @@ int testaCerto(char letraCerta){
 
 void imprimePalavra(){//imprime todas as letras descobertas até o momento
     int i, acertou;
+
+
     for(i=0;i<strlen(palavra);i++){
 
         acertou = testaCerto(palavra[i]);
@@ -155,15 +157,27 @@ void adicionaPalavra(){
 }
 
 
+void mostraForca(int erros){
+    printf(" ______    \n");
+    printf("|/     |   \n");
+    printf("|     %c%c%c  \n", (erros>=1 ? '(' : ' '), (erros>=1 ? '_' : ' '), (erros >= 1 ? ')' : ' '));
+    printf("|     %c%c%c  \n", (erros>=3 ? '\\' : ' '), (erros>=2 ? '|' : ' '), (erros >= 4 ? '/' : ' '));
+    printf("|      %c   \n", (erros>=2 ? '|': ' '));
+    printf("|     %c %c  \n", (erros >= 5 ? '/' : ' '), (erros >= 6 ? '\\' : ' '));
+    printf("|          \n\n");
+}
+
 int main() {
 
     int venceu=0, erros=0;
 
     escolhePalavraSecreta();
-    titulo();
+
 
     while(venceu==0 && erros<6){
 
+        titulo();
+        mostraForca(erros);
         imprimePalavra();
 
         jogada(letrasTentadas,tentativa);
@@ -172,6 +186,9 @@ int main() {
         venceu=testaVitoria();
 
     }
+    //ADICIONAR MENSAGEM VITORIA (MOSTRAR TITULO, FORCA COMPLETA E MENSAGEM)
+
+    //ADICIONAR MENSAGEM VITORIA (MOSTRAR TITULO, FORCA COMPLETA, MENSAGEM E PALAVRA)
 
     //adicionaPalavra();
 
