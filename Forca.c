@@ -7,12 +7,18 @@
 char palavra[20], letrasTentadas[26];
 int tentativa=0;
 
-void titulo(){ //mostra um titulo
+void titulo(){ //mostra o titulo
     system("cls");
 
-    printf("|*****************|\n");
-    printf("|* Jogo da Forca *|\n");
-    printf("|*****************|\n\n");
+    printf("   ___                         _        ______                            \n");
+    printf("  |_  |                       | |       |  ___|                           \n");
+    printf("    | | ___   __ _  ___     __| | __ _  | |_ ___  _ __ ___ __ _           \n");
+    printf("    | |/ _ \\ / _` |/ _ \\   / _` |/ _` | |  _/ _ \\| '__/ __/ _` |          \n");
+    printf("/\\__/ / (_) | (_| | (_) | | (_| | (_| | | || (_) | | | (_| (_| |          \n");
+    printf("\\____/ \\___/ \\__, |\\___/   \\__,_|\\__,_| \\_| \\___/|_|  \\___\\__,_|          \n");
+    printf("              __/ |                                                       \n");
+    printf("             |___/                                                        \n\n\n");
+
 }
 
 void jogada(){ //recebe a letra jogada em cada rodada e armazena em um array com todas as tentativas
@@ -167,7 +173,7 @@ int main() {
 
     }
 
-    adicionaPalavra();
+    //adicionaPalavra();
 
     return 0;
 
